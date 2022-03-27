@@ -1,2 +1,25 @@
 app.json
 "privacy": "unlisted",で非公開に設定できる（publicで公開）
+
+
+
+gitについて
+
+git status で状態を確認
+git add . で全てのファイルを追加
+git commit でファイル編集
+1番上にコミットメッセージを追記し保存
+git log で確認する
+
+からのファイルをgitの対象にするには、
+ファイル内に .gitkeepというファイルを作成
+
+
+npm install --save-dev eslint@8.3.0
+--save-dev をつけることで、devでjsonのdevに設定が反映される
+npx eslint --init で設定とライブラリのダウンロード
+
+
+eslincのruleで規制の設定可能
+1行だけは例外的にルールから除外したい場合は、
+{/* eslint-disable-next-line */}と記載する
