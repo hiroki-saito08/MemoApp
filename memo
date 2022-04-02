@@ -2,7 +2,6 @@ app.json
 "privacy": "unlisted",で非公開に設定できる（publicで公開）
 
 
-
 gitについて
 
 git status で状態を確認
@@ -23,3 +22,43 @@ npx eslint --init で設定とライブラリのダウンロード
 eslincのruleで規制の設定可能
 1行だけは例外的にルールから除外したい場合は、
 {/* eslint-disable-next-line */}と記載する
+
+
+
+  const children = props.children;
+  これを下記のように書ける（分割代入）
+  const { children } = props;
+
+
+受け渡したpropsのタイプをコンポーネント側で明示するために
+prop-typesを使う必要がある
+
+npm install prop-types@15.7.2
+
+type
+Hello.propTypes = {
+  children: string.isRequired,
+  bang: bool,
+};
+
+初期値
+Hello.defaultProps = {
+  bang: false,
+};
+
+
+テンプレートリテラル
+{`Hello ${children}`}
+
+
+javascriptの中で数字はtrueとして扱われ、0はfalseとして扱われる
+
+bool型
+trueの場合は省略可能
+
+
+属性値をpropsで受け取り上書きする
+<Hello style={{ fontSize: 16 }}>Small World</Hello>
+<Text style={[styles.text, style]}>
+配列で書く
+右から順の優先度になる
