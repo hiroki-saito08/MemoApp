@@ -62,3 +62,23 @@ trueの場合は省略可能
 <Text style={[styles.text, style]}>
 配列で書く
 右から順の優先度になる
+
+
+<View>タグはhtmlでいう<div>タグ
+
+ReactNativeのcss、frexboxは縦に作用する
+
+flexDirection: 'row', //横並びにする
+paddingVertical: 16, //上下の余白
+paddingHorizontal: 19, //左右の余白
+
+
+影の設定（これはiOSにしか対応していないメソッド）
+shadowColor: '#000000',
+shadowOffset: { width: 0, height: 8 }, //xとy
+shadowOpacity: 0.25, //透明度
+shadowRadius: 8,
+
+影の設定（これはandroidにしか対応していないメソッド）
+elevation: 8,
+これは高さ、浮いた感じでの表現、数値は決まってる
