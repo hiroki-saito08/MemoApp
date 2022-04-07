@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, ScrollView, Text, StyleSheet } from 'react-native';
+import {
+  View, ScrollView, Text, StyleSheet,
+} from 'react-native';
 
 import AppBar from '../components/AppBar';
 import CircleButton from '../components/CircleButton';
@@ -21,7 +23,7 @@ export default function MemoDetailScreen() {
           ・歯磨き粉
         </Text>
       </ScrollView>
-      <CircleButton style={styles.CircleButton}>+</CircleButton>
+      <CircleButton style={styles.CircleButton} name="edit-2" />
     </View>
   );
 }

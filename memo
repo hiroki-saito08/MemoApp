@@ -100,3 +100,8 @@ importは''じゃないと””だとエラー出る
 
 style: shape(), //オブジェクトの形を定義
 空だとなんでもOK
+
+
+npm install @expo/vector-icons@12.0.5
+人気の画像アイコンを集めたライブラリをインストール
+https://docs.expo.dev/guides/icons/
