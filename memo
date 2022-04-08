@@ -105,3 +105,22 @@ style: shape(), //オブジェクトの形を定義
 npm install @expo/vector-icons@12.0.5
 人気の画像アイコンを集めたライブラリをインストール
 https://docs.expo.dev/guides/icons/
+
+
+icomoon.ic
+自分で作った画像をアイコンとして取り込める状態にできる
+
+
+npm install @use-expo/font@2.0.0
+useFonts '@use-expo/font'
+fontLoaded
+
+
+<TextInput value="買い物リスト" multiline />
+multilineで複数行にできるリアクトネイティブのドキュメントに書いてある
+
+
+キーボードを使う場合、入力が終わった後に消すことができない
+そのためにKeyboardAvoidingViewというコンポーネントを使う
+
+IOSではI/Oタブからキーボードを表示する
