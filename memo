@@ -124,3 +124,25 @@ multilineで複数行にできるリアクトネイティブのドキュメン�
 そのためにKeyboardAvoidingViewというコンポーネントを使う
 
 IOSではI/Oタブからキーボードを表示する
+
+
+//クリック時の挙動を起こす{
+
+export default function CircleButton(props) {
+  const { style, name, onPress} = props;
+  return (
+    <TouchableOpacity style={[styles.circleButton, style]} onPress={onPress}>
+      <Feather name={name} size={32} color="white" />
+    </TouchableOpacity>
+  );
+
+CircleButton.propTypes = {
+  style: shape(),
+  name: string.isRequired,
+  onPress: func,
+};
+
+}
+
+親コンポーネントで挙動設定
+<CircleButton name="check" onPress={() => { Alert.alert('Pressed!'); }} />
