@@ -233,3 +233,26 @@ secureTextEntry
 あった方が良い
 textContentType="emailAddress"
 textContentType="password"
+
+
+firebaseの初期化設定
+if (firebase.apps.length === 0) {
+  firebase.initializeApp(firebaseConfig);
+}
+
+
+コールバック関数
+thenは会員登録に成功した時
+catchは会員登録に失敗した時
+
+firebase.auth().createUserWithEmailAndPassword(email, password)
+  .then((userCredential) => {
+    const { user } = userCredential;
+    console.log(user.uid);
+  })
+  .catch((error) => {
+    console.log(error.code, error.message);
+  });
+
+ナビゲーションの処理をthenの中に書くことで、
+登録に成功した時だけ画面を遷移させることができる
