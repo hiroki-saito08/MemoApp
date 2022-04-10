@@ -146,3 +146,72 @@ CircleButton.propTypes = {
 
 親コンポーネントで挙動設定
 <CircleButton name="check" onPress={() => { Alert.alert('Pressed!'); }} />
+
+
+ルーティング（画面遷移）はナビゲーションという
+ReactNavigationというライブラリをインストールして使う
+
+https://reactnavigation.org/docs/5.x/getting-started/
+
+npm show @react-navigation/native
+npm install @react-navigation/native@5.8.10
+//バージョンは任意
+
+expo install react-native-gesture-handler react-native-reanimated react-native-screens react-native-safe-area-context @react-native-community/masked-view
+
+npm install @react-navigation/stack@^5.x
+
+
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+
+import MemoListScreen from './src/screens/MemoListScreen';
+// import MemoDetailScreen from './src/screens/MemoDetailScreen';
+// import MemoEditScreen from './src/screens/MemoEditScreen';
+// import MemoCreateScreen from './src/screens/MemoCreateScreen';
+// import LogInScreen from './src/screens/LogInScreen';
+// import SignUpScreen from './src/screens/SignUpScreen';
+
+const Stack = createStackNavigator();
+
+export default function App() {
+  return (
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen name="Home" component={MemoListScreen} />
+      </Stack.Navigator>
+      <MemoListScreen />
+    </NavigationContainer>
+  );
+}
+
+
+ナビゲーションの中身を上書く
+onPress={() => {
+  navigation.reset({
+    index: 0,
+    routes: [{ name: 'MemoList' }],
+  });
+}}
+0番目にMemoListを入れる
+バックできなくなる
+
+
+Androidの挙動をiOSのアニメーションを統一する
+cardStyleInterpolators: CardStyleInterpolators.forHorizontalIOS,
+
+
+スクリーンごとに好きなアニメーションを設定することも可能
+<Stack.Screen
+  name="SignUp"
+  component={SignUpScreen}
+  options={{
+    cardStyleInterpolator: CardStyleInterpolators.forFadeFromBottomAndroid,
+  }}
+/>
+
+
+Androidもスワイプでバックできるようにする
+gestureEnabled: true,
+gestureDirection: 'horizontal',

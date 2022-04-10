@@ -24,6 +24,9 @@
             {
                 "namedComponents": "function-declaration"
             }
+        ],
+        "react/prop-types":[
+            "error", { "ignore":["navigation"] }
         ]
     }
 }
