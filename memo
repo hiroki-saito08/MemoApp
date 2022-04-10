@@ -215,3 +215,21 @@ cardStyleInterpolators: CardStyleInterpolators.forHorizontalIOS,
 Androidもスワイプでバックできるようにする
 gestureEnabled: true,
 gestureDirection: 'horizontal',
+
+
+use~で利用しているコンポーネントは全てreact hooksの概念
+
+
+
+最初の文字が大文字になるのを防ぐ
+autoCapitalize="none"
+
+入力がメアド入力に適した形になる
+keyboardType="email-address"
+
+入力した文字が伏字になる
+secureTextEntry
+
+あった方が良い
+textContentType="emailAddress"
+textContentType="password"
