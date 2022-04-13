@@ -256,3 +256,11 @@ firebase.auth().createUserWithEmailAndPassword(email, password)
 
 ナビゲーションの処理をthenの中に書くことで、
 登録に成功した時だけ画面を遷移させることができる
+
+
+うまくいかない
+useEffect(() => {
+  navigation.setOptions({
+    headerRight: () => <LogOutButton />,
+  });
+}, []);
