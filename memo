@@ -264,3 +264,8 @@ useEffect(() => {
     headerRight: () => <LogOutButton />,
   });
 }, []);
+
+
+bodyText: bodyText,
+このようなキーと値が同じものは省略して書く
+bodyText,
