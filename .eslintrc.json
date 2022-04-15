@@ -27,6 +27,12 @@
         ],
         "react/prop-types":[
             "error", { "ignore":["navigation"] }
-        ]
+        ],
+        "react/no-unstable-nested-components": [
+            "error",
+            {
+                "allowAsProps": true
+            }
+        ],
     }
 }

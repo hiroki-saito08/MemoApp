@@ -1,54 +1,58 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
-  Text, View, StyleSheet, TouchableOpacity, Alert,
+  View, StyleSheet, Alert,
 } from 'react-native';
 
 import firebase from 'firebase';
 import MemoList from '../components/MemoList';
 import CircleButton from '../components/CircleButton';
-// import LogOutButton from '../components/LogOutButton';
+import LogOutButton from '../components/LogOutButton';
 
 export default function MemoListScreen(props) {
   const { navigation } = props;
-  const handlePress = () => {
-    firebase.auth().signOut()
-      .then(() => {
-        navigation.reset({
-          index: 0,
-          routes: [{ name: 'LogIn' }],
+  const [memos, setMemos] = useState('');
+
+  useEffect(() => {
+    navigation.setOptions({
+      headerRight: () => <LogOutButton />,
+    });
+  }, []);
+
+  useEffect(() => {
+    const db = firebase.firestore();
+    const { currentUser } = firebase.auth();
+    let unsubscribe = () => {};
+
+    if (currentUser) {
+      const ref = db.collection(`users/${currentUser.uid}/memos`).orderBy('updatedAt', 'desc');
+      unsubscribe = ref.onSnapshot((snapshot) => {
+        const userMemos = [];
+        snapshot.forEach((doc) => {
+          console.log(doc.id, doc.data());
+          const data = doc.data();
+          userMemos.push({
+            id: doc.id,
+            bodyText: data.bodyText,
+            updatedAt: data.updatedAt.toDate(),
+          });
         });
-      })
-      .catch(() => {
-        Alert.alert('ログアウトに失敗しました');
+        setMemos(userMemos);
+      }, (error) => {
+        console.log(error);
+        Alert.alert('データの読み込みに失敗しました。');
       });
-  };
+    }
+    return unsubscribe;
+  }, []);
 
   return (
     <View style={styles.container}>
-      <MemoList />
+      <MemoList memos={memos} />
       <CircleButton
         name="plus"
         onPress={() => { navigation.navigate('MemoCreate'); }}
       />
-      <TouchableOpacity
-        onPress={handlePress}
-        style={{
-          paddingHorizontal: 12,
-          paddingVertical: 4,
-          backgroundColor: '#467fd3',
-          width: 100,
-          marginTop: 10,
-        }}
-      >
-        <Text
-          style={{
-            fontSize: 14,
-            color: 'rgba( 255, 255, 255, 0.7)',
-          }}
-        >
-          ログアウト
-        </Text>
-      </TouchableOpacity>
+
     </View>
   );
 }

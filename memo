@@ -265,7 +265,28 @@ useEffect(() => {
   });
 }, []);
 
+こちらreact-nativeのエラーではなく、ESLintのエラーのようです。
+react-navigationの公式ドキュメントに沿った実装方法なので、ESLint側のルールを変更すると良いと思います。
+
+.eslintrc.json に以下のルールを追加してみてください。
+
+
+
+"rules": {
+  // 省略
+
+  // 追加
+  "react/no-unstable-nested-components": ["error", { "allowAsProps": true }]
+}
+
+
+
 
 bodyText: bodyText,
 このようなキーと値が同じものは省略して書く
 bodyText,
+
+
+firebaseの日付データはタイムスタンプ型になる
+これをjavascriptの日付に変更
+updatedAt: data.updatedAt.toDate(),
