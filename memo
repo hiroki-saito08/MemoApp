@@ -290,3 +290,7 @@ bodyText,
 firebaseの日付データはタイムスタンプ型になる
 これをjavascriptの日付に変更
 updatedAt: data.updatedAt.toDate(),
+
+
+<Text style={styles.memoListItemTitle} numberOfLines={1}>{item.bodyText}</Text>
+numberOfLinesでリストに表示される行数を指定
