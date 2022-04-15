@@ -306,3 +306,8 @@ export function dateToString(date) {
   if (!date) { return '' };
   return format(date, 'yyyy年M月d日 HH時mm分');
 }
+
+今ある要素は残して更新したい時の処理
+  bodyText: body,
+  updatedAt: new Date(),
+},{ merge:true })
