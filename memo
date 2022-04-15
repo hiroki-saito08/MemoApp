@@ -294,3 +294,15 @@ updatedAt: data.updatedAt.toDate(),
 
 <Text style={styles.memoListItemTitle} numberOfLines={1}>{item.bodyText}</Text>
 numberOfLinesでリストに表示される行数を指定
+
+日付のフォーマット、ライブラリ
+npm install date-fns@2.28.0
+
+utils/index.js
+
+import { format } from "date-fns";
+
+export function dateToString(date) {
+  if (!date) { return '' };
+  return format(date, 'yyyy年M月d日 HH時mm分');
+}
