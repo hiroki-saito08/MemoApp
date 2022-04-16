@@ -19,17 +19,21 @@ export default function MemoEditScreen(props) {
     if (currentUser) {
       const db = firebase.firestore();
       const ref = db.collection(`users/${currentUser.uid}/memos`).doc(id);
-      ref.set({
-        bodyText: body,
-        updatedAt: new Date(),
-      }, { merge: true })
-        .then(() => {
-          navigation.goBack();
-        })
-        .catch((error) => {
-          const errorMsg = translateErrors(error.code);
-          Alert.alert(errorMsg.title, errorMsg.description);
-        });
+      if (body === '') {
+        Alert.alert('値が空です。');
+      } else {
+        ref.set({
+          bodyText: body,
+          updatedAt: new Date(),
+        }, { merge: true })
+          .then(() => {
+            navigation.goBack();
+          })
+          .catch((error) => {
+            const errorMsg = translateErrors(error.code);
+            Alert.alert(errorMsg.title, errorMsg.description);
+          });
+      }
     }
   };
   return (
