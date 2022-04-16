@@ -23,12 +23,12 @@
       "buildNumber": "1.0.0"
     },
     "android": {
-      "pacage": "website.saitohasaito",
+      "package": "website.saitohasaito",
       "versionCode": 1,
       "permissions": [],
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-foreground.png",
-        "backgroundColor": "./assets/adaptive-background.png"
+        "foregroundImage": "./assets/adaptive-icon.png",
+        "backgroundColor": "#FFFFFF"
       }
     },
     "web": {
