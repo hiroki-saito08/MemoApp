@@ -31,21 +31,19 @@ export default function LogInScreen(props) {
   const handlePress = () => {
     setIsloading(true);
     firebase.auth().signInWithEmailAndPassword(email, password)
-      .then((userCredential) => {
-        const { user } = userCredential;
-        console.log(user.uid);
+      .then(() => {
         navigation.reset({
           index: 0,
           routes: [{ name: 'MemoList' }],
         });
       })
       .catch((error) => {
-        const errorMsg = translateErrors(error.code)
+        const errorMsg = translateErrors(error.code);
         Alert.alert(errorMsg.title, errorMsg.description);
       })
       .then(() => {
         setIsloading(false);
-      })
+      });
   };
 
   return (

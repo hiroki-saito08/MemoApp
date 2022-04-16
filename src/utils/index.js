@@ -1,7 +1,7 @@
-import { format } from "date-fns";
+import { format } from 'date-fns';
 
 export function dateToString(date) {
-  if (!date) { return '' };
+  if (!date) { return ''; }
   return format(date, 'yyyy年M月d日 HH時mm分');
 }
 
@@ -22,9 +22,6 @@ export function translateErrors(code) {
       break;
     case 'auth/email-already-in-use':
       error.description = 'メールアドレスが使用されています。';
-      break;
-    case 'auth/invalid-email':
-      error.description = 'メールアドレスが不正です。';
       break;
     case 'auth/operation-not-allowed':
       error.description = 'ユーザーが見つかりませんでした。';

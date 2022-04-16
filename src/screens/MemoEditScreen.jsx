@@ -1,12 +1,12 @@
-import React,{ useState } from 'react';
+import React, { useState } from 'react';
 import {
   View, TextInput, StyleSheet, Alert,
 } from 'react-native';
 import firebase from 'firebase';
+import { shape, string } from 'prop-types';
 
 import CircleButton from '../components/CircleButton';
 import KeyboardSafeView from '../components/KeyboardSafeView';
-import { shape, string } from 'prop-types';
 import { translateErrors } from '../utils';
 
 export default function MemoEditScreen(props) {
@@ -22,7 +22,7 @@ export default function MemoEditScreen(props) {
       ref.set({
         bodyText: body,
         updatedAt: new Date(),
-      },{ merge:true })
+      }, { merge: true })
         .then(() => {
           navigation.goBack();
         })
@@ -31,7 +31,7 @@ export default function MemoEditScreen(props) {
           Alert.alert(errorMsg.title, errorMsg.description);
         });
     }
-  }
+  };
   return (
     <KeyboardSafeView style={styles.container}>
       <View style={styles.inputContainer}>
@@ -53,7 +53,7 @@ export default function MemoEditScreen(props) {
 
 MemoEditScreen.propTypes = {
   route: shape({
-    params: shape({ id: string, bodyText: string}),
+    params: shape({ id: string, bodyText: string }),
   }).isRequired,
 };
 

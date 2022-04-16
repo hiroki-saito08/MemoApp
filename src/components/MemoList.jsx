@@ -30,16 +30,16 @@ export default function MemoList(props) {
           onPress: () => {
             ref.delete()
               .catch(() => {
-                Alert.alert('削除に失敗しました')
-              })
+                Alert.alert('削除に失敗しました');
+              });
           },
         },
       ]);
     }
-  }
+  };
 
-  const renderItem = ({item}) => {
-    return (
+  const renderItem = ({ item }) => {
+    (
       <TouchableOpacity
         style={styles.memoListItem}
         onPress={() => { navigation.navigate('MemoDetail', { id: item.id }); }}
@@ -58,7 +58,7 @@ export default function MemoList(props) {
         </TouchableOpacity>
       </TouchableOpacity>
     );
-  }
+  };
 
   return (
     <View style={styles.container}>
@@ -81,7 +81,7 @@ MemoList.propTypes = {
 
 const styles = StyleSheet.create({
   container: {
-    flex:1,
+    flex: 1,
   },
   memoListItem: {
     backgroundColor: '#ffffff',

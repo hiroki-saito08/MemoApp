@@ -13,7 +13,7 @@ export default function Loading(props) {
         <ActivityIndicator size="large" color="#000000" />
       </View>
     </View>
-  )
+  );
 }
 
 Loading.propTypes = {
@@ -41,4 +41,4 @@ const styles = StyleSheet.create({
   inner: {
     marginBottom: 80,
   },
-})
+});

@@ -20,14 +20,13 @@ export default function MemoDetailScreen(props) {
       const db = firebase.firestore();
       const ref = db.collection(`users/${currentUser.uid}/memos`).doc(id);
       unsubscribe = ref.onSnapshot((doc) => {
-        console.log(doc.id, doc.data());
         const data = doc.data();
         setMemo({
           id: doc.id,
           bodyText: data.bodyText,
           updatedAt: data.updatedAt.toDate(),
         });
-      })
+      });
     } return unsubscribe;
   }, []);
 
@@ -45,7 +44,7 @@ export default function MemoDetailScreen(props) {
       <CircleButton
         style={styles.CircleButton}
         name="edit-2"
-        onPress={() => { navigation.navigate('MemoEdit',{id: memo.id, bodyText: memo.bodyText}); }}
+        onPress={() => { navigation.navigate('MemoEdit', { id: memo.id, bodyText: memo.bodyText }); }}
       />
     </View>
   );
@@ -53,7 +52,7 @@ export default function MemoDetailScreen(props) {
 
 MemoDetailScreen.propTypes = {
   route: shape({
-    params: shape({ id: string}),
+    params: shape({ id: string }),
   }).isRequired,
 };
 

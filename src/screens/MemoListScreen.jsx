@@ -7,7 +7,7 @@ import firebase from 'firebase';
 import MemoList from '../components/MemoList';
 import CircleButton from '../components/CircleButton';
 import LogOutButton from '../components/LogOutButton';
-import Button from '../components/Button'
+import Button from '../components/Button';
 import Loading from '../components/Loading';
 
 export default function MemoListScreen(props) {
@@ -32,7 +32,6 @@ export default function MemoListScreen(props) {
       unsubscribe = ref.onSnapshot((snapshot) => {
         const userMemos = [];
         snapshot.forEach((doc) => {
-          console.log(doc.id, doc.data());
           const data = doc.data();
           userMemos.push({
             id: doc.id,
@@ -42,8 +41,7 @@ export default function MemoListScreen(props) {
         });
         setMemos(userMemos);
         setIsloading(false);
-      }, (error) => {
-        console.log(error);
+      }, () => {
         setIsloading(false);
         Alert.alert('データの読み込みに失敗しました。');
       });
